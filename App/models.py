@@ -22,7 +22,7 @@ class Applications(models.Model):
 
 
 class ApplicationStatus(models.Model):
-    is_open = models.BooleanField(default=False)
+    is_open = models.BooleanField(default=True)
 
     def __str__(self):
         return f"Application Status: {'Open' if self.is_open else 'Closed'}"
