@@ -1,8 +1,8 @@
 from django import forms
-from .models import Applications
+from .models import Application
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
-        model = Applications
+        model = Application
         fields = '__all__'
 

@@ -79,6 +79,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    # The external database is what will contain names, ID numbers, and locations of voters from IEBC
+    'external_db':{
+        'ENGINE': 'external_db_name',
+        'NAME': 'external_db_name',
+        'USER': 'external_db_user',
+        'PASSWORD': 'external_db_password',
+        'HOST': 'external_db_host',
+        'PORT': 'external_db_port',
     }
 }
 
