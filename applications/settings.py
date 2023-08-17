@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'applications.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'BursaryApplication',
+        'USER': 'root',
+        'PASSWORD': 'Admin@me',
+        'HOST': 'localhost',
+        'PORT': '3306',
     },
     # The external database is what will contain names, ID numbers, and locations of voters from IEBC
     'external_db':{
