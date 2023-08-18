@@ -80,22 +80,24 @@ WSGI_APPLICATION = 'applications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASE_ROUTERS = ['App.routers.ExternalDatabaseRouter']
+
 DATABASES = {
     'default': {
-        'ENGINE': os.environ["DB_DEFAULT_ENGINE"],
-        'NAME': os.environ['DB_DEFAULT_NAME'],
-        'USER': os.environ['DB_DEFAULT_USER'],
-        'PASSWORD': os.environ['DB_DEFAULT_PASSWORD'],
-        'HOST': os.environ['DB_DEFAULT_HOST'],
-        'PORT': os.environ['DB_DEFAULT_PORT'],
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Applications App',
+        'USER': 'root',
+        'PASSWORD': 'Admin@me',
+        'HOST': 'localhost',
+        'PORT':'3306'
     },
-    # The external database is what will contain names, ID numbers, and locations of voters from IEBC
     'external_db': {
-        'ENGINE': os.environ["DB_EXTERNAL_ENGINE"],
-        'NAME': os.environ['DB_EXTERNAL_NAME'],
-        'USER': os.environ['DB_EXTERNAL_USER'],
-        'PASSWORD': os.environ['DB_EXTERNAL_PASSWORD'],
-        'HOST': os.environ['DB_EXTERNAL_HOST'],
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Voters Database',
+        'USER': 'root',
+        'PASSWORD': 'Admin@me',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

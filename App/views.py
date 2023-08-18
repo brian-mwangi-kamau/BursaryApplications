@@ -2,33 +2,35 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 #from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from .models import ExternalDatabaseData
+#import gspread # google spreadsheets
+#from oauth2client.service_account import ServiceAccountCredentials
+from .models import BursaryApplication
+from .forms import BursaryApplicationForm
 
-
-
-#Admin Login view
-def admin_login(request):
+# View for applying forms
+def apply_for_bursary(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        form = BursaryApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            application = form.save(commit=False) # Not yet time to save to the database
+            # The logic for comparison of the constituency, location and Id_number
 
-        if user is not None and user.is_admin:
-            login(request, user)
-            return redirect('admin_profile')
-        
+            application.save() # Saving to the database
+            return redirect('application_success')
+
         else:
-            response = HttpResponse('Access barred!')
-            return response
-        
-    return render(request, 'admin_login.html')
+            form = BursaryApplicationForm()
+
+        return render(request, 'application_form.html', {'form': form})
 
 
-# Admin management profile
-# This is where the admin will control features like toggling home pages
-def admin_profile(request):
-    return render(request, "admin_profile.html")
 
 
-# Admin inbox
+# View for filling valid applications to google spreadsheets automatically follow
+
+#def view_external_data(request):
+ #   external_data = ExternalDatabaseData.objects.using('Applications App'),all()
+
 
 

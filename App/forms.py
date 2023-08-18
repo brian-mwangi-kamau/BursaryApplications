@@ -1,9 +1,10 @@
-'''
-from django import forms
-from .models import Application
 
-class ApplicationForm(forms.ModelForm):
+from django import forms
+from .models import BursaryApplication
+
+class BursaryApplicationForm(forms.ModelForm):
     class Meta:
-        model = Application
-        fields = '__all__'
-'''
+        model = BursaryApplication
+        fields = ['name', 'school', 'admission_number', 'id_number', 'constituency', 'location']
+
+
