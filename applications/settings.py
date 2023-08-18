@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,24 +82,26 @@ WSGI_APPLICATION = 'applications.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'BursaryApplication',
-        'USER': 'root',
-        'PASSWORD': 'Admin@me',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': os.environ["DB_DEFAULT_ENGINE"],
+        'NAME': os.environ['DB_DEFAULT_NAME'],
+        'USER': os.environ['DB_DEFAULT_USER'],
+        'PASSWORD': os.environ['DB_DEFAULT_PASSWORD'],
+        'HOST': os.environ['DB_DEFAULT_HOST'],
+        'PORT': os.environ['DB_DEFAULT_PORT'],
     },
     # The external database is what will contain names, ID numbers, and locations of voters from IEBC
-    'external_db':{
-        'ENGINE': 'external_db_name',
-        'NAME': 'external_db_name',
-        'USER': 'external_db_user',
-        'PASSWORD': 'external_db_password',
-        'HOST': 'external_db_host',
-        'PORT': 'external_db_port',
+    'external_db': {
+        'ENGINE': os.environ["DB_EXTERNAL_ENGINE"],
+        'NAME': os.environ['DB_EXTERNAL_NAME'],
+        'USER': os.environ['DB_EXTERNAL_USER'],
+        'PASSWORD': os.environ['DB_EXTERNAL_PASSWORD'],
+        'HOST': os.environ['DB_EXTERNAL_HOST'],
     }
 }
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
