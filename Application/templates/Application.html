@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/application_form.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Application Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.student_name.id_for_label }}">Student Name:</label>
+                {{ form.student_name }}
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.school_name.id_for_label }}">School Name:</label>
+                {{ form.school_name }}
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.admission_number.id_for_label }}">Admission Number:</label>
+                {{ form.admission_number }}
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.year_of_study.id_for_label }}">Year of Study:</label>
+                {{ form.year_of_study }}
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.constituency.id_for_label }}">Constituency:</label>
+                <select class="form-select" id="{{ form.constituency.id_for_label }}" name="{{ form.constituency.name }}">
+                    <option value="Ndaragrwa">Ndaragrwa</option>
+                    <option value="Kasarani">Kasarani</option>
+                    <option value="Kahawa">Kahawa</option>
+                    <option value="Njoro">Njoro</option>
+                    <option value="Bahati">Bahati</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.location.id_for_label }}">Location:</label>
+                <select class="form-select" id="{{ form.location.id_for_label }}" name="{{ form.location.name }}">
+                    <option value="Kiandege">Kiandege</option>
+                    <option value="Maili nne">Maili nne</option>
+                    <option value="Kihara">Kihara</option>
+                    <option value="Mukoe">Mukoe</option>
+                    <option value="Shamata">Shamata</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+                {{ form.phone_number }}
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="{{ form.id_number.id_for_label }}">ID Number:</label>
+                {{ form.id_number }}
+            </div>
+            
+            <button class="form-submit" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

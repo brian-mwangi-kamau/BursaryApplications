@@ -15,5 +15,5 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ('Landing_page_template',)
 '''
 
-admin.site.register(CustomUser, CustomUserAdmin )
+admin.site.register(CustomUser, UserAdmin)
 #admin.site.register(SiteSettingsAdmin)

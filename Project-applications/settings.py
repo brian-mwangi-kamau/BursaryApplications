@@ -82,12 +82,16 @@ WSGI_APPLICATION = 'Project-applications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASE_ROUTERS = ['App.routers.ExternalDatabaseRouter']
+#DATABASE_ROUTERS = ['Application.routers.ExternalDatabaseRouter']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR /'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'database1',
+        'USER': 'root',
+        'PASSWORD': 'Admin@me',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
