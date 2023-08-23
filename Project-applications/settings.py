@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Application',
-    'Comparison',
-    'GoogleSpreadsheets',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +90,15 @@ DATABASES = {
         'PASSWORD': 'Admin@me',
         'HOST': 'localhost',
         'PORT': '3306'
-    }
+    },
+    'external_database': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'voters database',
+        'USER': 'root',
+        'PASSWORD': 'Admin@me',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 
 

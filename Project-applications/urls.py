@@ -20,6 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Application.urls')),
-    #path('', include('Comparison.urls')),
     #path('', include('GoogleSpreadsheets.urls')),
 ]

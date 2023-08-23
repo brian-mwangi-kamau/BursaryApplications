@@ -32,36 +32,15 @@ class Application(models.Model):
         return self.student_name
 
 
-
-'''
-class SiteSettings(models.Model):
-    LANDING_PAGE_CHOICES = [
-         ('NO', 'No Landing Page'), # This is the page indicating that applications are closed
-         ('YES', 'Yes Landing Page'),
-    ]
-
-    landing_page_template = models.CharField(
-        max_length=3, 
-        choices=LANDING_PAGE_CHOICES, 
-        default='NO'
-    )
-
-
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name=_('groups'),
-        blank=True,
-        related_name='custom_users_groups'
-    )
-
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name=_('user permissions'),
-        blank=True,
-        related_name='custom_user_permissions'
-    )
+# Model for comparison
+class VoterDatabase(models.Model):
+    id_number = models.CharField(max_length=8)
+    constituency = models.CharField(max_length=15)
+    location = models.CharField(max_length=15)
     
-class InboxMessage(models.Model): # The inbox feature to receive pending applications
-    recipient = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    content = models.TextField()
-'''
+    def __str__(self):
+        return self.id_number
+    
+external_data = VoterDatabase.objects.using('external_database').all()
+
+

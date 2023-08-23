@@ -29,6 +29,13 @@ def application_form(request):
 def success(request):
     return render(request, 'success.html')
 
+# View for comparison
+def compare(request, application):
+    id_number = application.id_number
+    constituency = application.constituency
+    location = application.location
+
+
 
 '''
 def landing_page(request):
