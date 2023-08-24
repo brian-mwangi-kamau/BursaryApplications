@@ -16,7 +16,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -124,6 +123,26 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'Application.CustomUser'
+
+# Email configuration
+smtp_server = os.environ['smtp_server']
+smtp_port = os.environ['smtp_port']
+sender_email = os.environ['sender_email']
+sender_password = os.environ['sender_password']
+recipient_email = os.environ['recipient_email']
+
+'''
+EMAIL_BACKEND = os.environ('EMAIL_BACKEND')
+EMAIL_HOST = os.environ('EMAIL_HOST')
+EMAIL_PORT = os.environ('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = os.environ('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_USE_SSL = os.environ('EMAIL_USE_SSL', default=False, cast=bool)
+EMAIL_HOST_USER = os.environ('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'your-email@gmail.com')
+EMAIL_SUBJECT_PREFIX = os.environ.get('EMAIL_SUBJECT_PREFIX', '[MyApp] ')
+'''
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
