@@ -1,3 +1,4 @@
+from django.conf import settings
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
@@ -70,10 +71,10 @@ def save_to_googlesheets(data):
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
     
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('google/credentials.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('#replace with the email provided in the JSON file', scope)
     client = gspread.authorize(credentials)
 
-    spreadsheet = client.open('BursaryApplications')
+    spreadsheet = client.open('Application Sheets') # The name of the sheets right there.
 
     worksheet = spreadsheet.get_worksheet(0)
 # The only data going into the spreadsheet(s)
