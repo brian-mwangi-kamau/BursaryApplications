@@ -14,7 +14,8 @@ An applicant will fill in these details in the application form:
                   Their / parent's phone and national ID number
 
 Below is a graphical template for the form:
-                  ![image](https://github.com/brian-mwangi-kamau/BursaryApplications/assets/127291274/e2095b3b-ef88-4799-aaa2-310d085e58c2)
+![appp](https://github.com/brian-mwangi-kamau/BursaryApplications/assets/127291274/05158c43-a78d-4164-99c9-0e14f5ce2002)
+
 
 The application will be submitted, received on the backend and saved in a database with all the information.
 
@@ -37,8 +38,8 @@ Second, here is what you need to configure in your environment:
 2: You need to have a default database where the applications will be saved, (even before the queries are performed - this is important for future reference)
 You'll also need an external database, already containing data "from the IEBC"
 You'll have the external_database set up like this:
+![db](https://github.com/brian-mwangi-kamau/BursaryApplications/assets/127291274/4e08333f-c47e-4a7b-9a70-b5027b655f7a)
 
-![image](https://github.com/brian-mwangi-kamau/BursaryApplications/assets/127291274/c804a6e7-7305-4093-8918-bf1cfd642ed3)
 
 That said, you'll also need to set up two emails, one will be the email used to send the invalid applications to the admin, whereas the second one is as you guessed. That'll be the recipient email ("admin's email"). ~ refer to the .env file for clarity
 
