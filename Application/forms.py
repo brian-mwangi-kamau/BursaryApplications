@@ -9,7 +9,7 @@ class ApplicationForm(forms.Form):
     year_of_study = forms.CharField(max_length=50, label="Form or Year of Study")
     constituency = forms.CharField(max_length=15)
     location = forms.CharField(max_length=15)
-    phone_number = forms.CharField(max_length=10, validators=[...])
+    phone_number = forms.CharField(max_length=10)
     id_number = forms.CharField(max_length=8)
 
     class Meta:
