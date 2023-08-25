@@ -89,7 +89,7 @@ DATABASES = {
     },
     'external_database': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'database2',
+        'NAME': 'voters database',
         'USER': 'root',
         'PASSWORD': 'Admin@me',
         'HOST': 'localhost',
