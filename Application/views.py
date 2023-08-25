@@ -19,7 +19,6 @@ def get_voter_info(id_number):
         if row:
             return row[0], row[1]
         return None, None
-    
 
 
 def application_form(request):
@@ -37,22 +36,36 @@ def application_form(request):
                 phone_number=form_data['phone_number'],
                 id_number=form_data['id_number']
             )
-            application.save()
+            application.save() # Save to default database before querying external database
+
 
             voter_constituency, voter_location = get_voter_info(form_data['id_number'])
 
+            # The function below calls the "save_to_googlesheets" function below there.
             if (voter_constituency == form_data['constituency'] and
                 voter_location == form_data['location']):
-                save_to_googlesheets(form_data)
+                # Valid voter details, save to Google Sheets
+                # We won't save the phone number and ID number to the spreadsheets for security reasons
+                save_to_googlesheets({
+                    'student_name': form_data['student_name'],
+                    'school_name': form_data['school_name'],
+                    'admission_number': form_data['admission_number'],
+                    'year_of_study': form_data['year_of_study'],
+                    'constituency': form_data['constituency'],
+                    'location': form_data['location']
+                })
+                return render(request, 'success.html') # This template is shown when the application has been saved to the spreadsheet(s) only!
             else:
+                # Invalid voter details, send email
                 send_email(form_data)
+                return render(request, 'failure.html') # This template is shown when the application has been sent to the email for manual review
+    else:
+        form = ApplicationForm()
+    return render(request, 'Application.html', {'form': form})
 
-            return render(request, 'success.html')
-        else:
-            form = ApplicationForm()
-        return render(request, 'Application.html', {'form': form})
 
-
+# We need to get the logic for adding this data to the spreadsheets. This is wrong and isn't working.
+# We don't have a spreadsheets named BursaryApplications
 def save_to_googlesheets(data):
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
@@ -63,17 +76,19 @@ def save_to_googlesheets(data):
     spreadsheet = client.open('BursaryApplications')
 
     worksheet = spreadsheet.get_worksheet(0)
-
+# The only data going into the spreadsheet(s)
     worksheet.append_row([
         data['student_name'],
         data['school_name'],
         data['admission_number'],
         data['year_of_study'],
+        data['constituency'],
         data['location']
     ])
 
 
-
+# This logic is working fine as hell. 
+# After the comparison to the voter's database, the invalid applications are being sent to the email with all the details in the application
 def send_email(form_data):
     subject = 'New Application Review'
     message = f"Application details:\n\n" \
@@ -88,9 +103,9 @@ def send_email(form_data):
     
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = os.environ('EMAIL_HOST_USER')
-    smtp_password = os.environ('EMAIL_HOST_PASSWORD')
-    recipient_email = os.environ('RECIPIENT_EMAIL')
+    smtp_username = os.environ['EMAIL_HOST_USER']
+    smtp_password = os.environ['EMAIL_HOST_PASSWORD']
+    recipient_email = os.environ['RECIPIENT_EMAIL']
 
     from_email = smtp_username
     to_email = recipient_email
