@@ -14,7 +14,6 @@ An applicant will fill in these details in the application form:
                   Their parent/guardian's phone and national ID number
 
 Below is a graphical template of the form:
-![appp](https://github.com/brian-mwangi-kamau/BursaryApplications/assets/127291274/05158c43-a78d-4164-99c9-0e14f5ce2002)
 
 
 The application will be submitted, received on the backend, and saved in a database with all the information.
