@@ -1,5 +1,6 @@
 # Bursary Application collection System
 I built a bursary applications collection system for the NG-CDF (Kenya).
+NB: This project is licensed, refer to [this text](https://github.com/brian-mwangi-kamau/BursaryApplications/blob/main/LICENSE.md)
 
 # Project Overview
 In consideration of non-developers, I wrote a more friendlier and detailed documentation on Hashnode. Check it out [here](https://brayo.hashnode.dev/a-bursary-applications-collection-system)
@@ -216,3 +217,5 @@ Go forth and build software that'll solve problems!
 # Disclaimer
 This project is neither an open source project, nor is it open for recreation.
 Do not clone this project to your local environment, and do not recreate and distribute it.
+Here is a custom license for the project: [LICENSE](https://github.com/brian-mwangi-kamau/BursaryApplications/blob/main/LICENSE.md)
+Should anyone be found to have broken the terms of this project, legal measures will be taken against them.
