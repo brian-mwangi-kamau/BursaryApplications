@@ -1,5 +1,6 @@
 # Bursary Application collection System
 I built a bursary applications collection system for the NG-CDF (Kenya).
+
 NB: This project is licensed, refer to [this text](https://github.com/brian-mwangi-kamau/BursaryApplications/blob/main/LICENSE.md)
 
 # Project Overview
