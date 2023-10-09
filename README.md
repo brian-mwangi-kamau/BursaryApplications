@@ -111,7 +111,7 @@ def get_voter_info(id_number):
             return row[0], row[1]
         return None, None
 ```
-The reference `external_database` is the name of my database. It could also have other names like "IEBC_db" to make it easy for other developers.
+The reference `external_database` is the name of my database. It could also have other names like "IEBC_db" to make it easy for other developers to read and make changes to the code.
 
 I then referenced the function in my view and added a logic to query the `external_database` with data in the application.
 A snippet:
@@ -139,7 +139,7 @@ A snippet:
 ```
 
 The `save_to_googlesheets` function being called in the view above saves the application data to a spreadsheet automatically. Before I share the snippet for that function, I'll explain vaguely the view above. 
-In the logic for the `application_form` view, the  system checks whether the owner of the provided ID number(in the application) was last registered as a voter from the constituency they provided. If the data matches the one in the IEBC database, the function `save_to_googlesheets`. This function's code snippet is here:
+In the logic for the `application_form` view, the  system checks whether the owner of the provided ID number(in the application) was last registered as a voter from the constituency they provided. If the data matches the one in the IEBC database, the function `save_to_googlesheets` is called. This function's code snippet is here:
 ```python
 def save_to_googlesheets(data):
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
@@ -201,7 +201,7 @@ def send_email(form_data):
         server.login(smtp_username, smtp_password)
         server.sendmail(from_email, to_email, msg.as_string())
 ```
-The code in the view above isn't complex as much. I won't go deep into it.
+The code in the view above isn't complex as much so I won't go deep into it.
 
 Earlier, I mentioned a file that would/should be downloaded from the Google Console.
 This is a JSON file containing API keys that should be generated when developing this system.
@@ -214,5 +214,5 @@ I hope you learnt something buddy.
 Go forth and build software that'll solve problems!
 
 # Disclaimer
-This project is not an open source project, and nor is it open for recreation.
-Do not clone this project to your local environment, and do not recreate it and ditribute it.
+This project is neither an open source project, nor is it open for recreation.
+Do not clone this project to your local environment, and do not recreate and distribute it.
