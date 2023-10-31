@@ -1,12 +1,12 @@
-##Bursary Application collection System
+## Bursary Application collection System
 I built a bursary applications collection system for the NG-CDF (Kenya).
 
 NB: This project is licensed, refer to [this license](https://github.com/brian-mwangi-kamau/BursaryApplications/blob/main/LICENSE)
 
-##Project Overview
+## Project Overview
 In consideration of non-developers, I wrote a more friendlier and detailed documentation on Hashnode. [Check it out here](https://brayo.hashnode.dev/a-bursary-applications-collection-system)
 
-- For Developers
+For Developers:
 This system is written in Django with Python.
 
 I started by defining the model for a user, who in this case will be the system administrator.
